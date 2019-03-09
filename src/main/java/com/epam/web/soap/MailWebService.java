@@ -11,15 +11,12 @@ import java.io.IOException;
 import java.util.List;
 
 @WebService
+@SOAPBinding(style = SOAPBinding.Style.DOCUMENT, use= SOAPBinding.Use.LITERAL)
 public interface MailWebService {
-    @WebMethod
+
     void sendLetter(Letter letter) throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException;
-    @WebMethod
     List<Letter> getAllLetters() throws IOException;
-    @WebMethod
     void deleteLetterBySubject(String subj);
-    @WebMethod
     List<Letter> getLetterByEmail(String email);
-    @WebMethod
     List<Letter> getLetterBySubject(String subj);
 }
